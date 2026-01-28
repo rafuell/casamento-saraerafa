@@ -55,10 +55,24 @@
       gap: 14px;
     }
 
+    /* LOGO / MONOGRAMA */
     .monogram{
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       letter-spacing: 1px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      white-space: nowrap; /* não quebra linha */
+      font-size: 1.05rem;
+    }
+
+    .monogram .amp{
+      font-weight: 400;
+      opacity: 0.85;
+      transform: translateY(-1px);
     }
 
     .nav-links{
@@ -83,7 +97,6 @@
 
     /* HERO */
     .hero {
-      /* ✅ Coloque as fotos numa pasta /images quando publicar */
       background: url('images/IMG_8725.MOV.jpg') center/cover no-repeat;
       min-height: 82vh;
       display: grid;
@@ -105,7 +118,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      padding: 0 5% 0 0px;
+      padding: 0 8% 0 18px;
       max-width: 520px;
     }
 
@@ -197,7 +210,6 @@
     }
 
     .story-box p{ margin: 0 0 14px; color: var(--text); }
-
     .story-box p:last-child{ margin-bottom: 0; }
 
     .story-side{
@@ -209,14 +221,6 @@
       display: grid;
       place-items: center;
       text-align: left;
-    }
-
-    .kicker{
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 0 0 8px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
     }
 
     .bigline{
@@ -367,76 +371,84 @@
       text-align: center;
     }
 
-@media (max-width: 900px){
+    /* ✅ MOBILE: NAV + HERO ajustados pra ficar bonito */
+    @media (max-width: 900px){
 
-  /* NAV: fica mais “clean” e evita quebrar feio */
-  .nav-inner{
-    padding: 12px 12px;
-    gap: 10px;
-  }
-  .nav-links{
-    gap: 6px;
-    font-size: 0.9rem;
-  }
-  .nav-links a{
-    padding: 6px 8px;
-  }
+      /* NAV: monograma 1 linha + links na linha de baixo */
+      .nav-inner{
+        padding: 12px 12px;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-  /* HERO: no celular centraliza e dá respiro */
-  .hero{
-    min-height: 72vh;
-    justify-items: center;     /* tira o alinhamento pra direita */
-    text-align: center;
-    background-position: 55% center; /* ajusta o corte da foto */
-  }
+      .nav-links{
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
 
-  .hero-content{
-    padding: 0 16px;          /* evita “colado” nas bordas */
-    max-width: 560px;
-  }
+      .nav-links a{
+        padding: 6px 8px;
+      }
 
-  .hero h1{
-    font-size: 2.2rem;
-    line-height: 1.1;
-  }
+      /* HERO: centraliza e melhora enquadramento */
+      .hero{
+        min-height: 72vh;
+        justify-items: center;
+        text-align: center;
 
-  .hero p{
-    font-size: 1rem;
-    line-height: 1.5;
-  }
+        /* 🔥 ajuste do corte da foto pra mostrar vocês melhor */
+        background-position: 32% 30%;
+      }
 
-  .hero-cta{
-    width: 100%;
-    justify-content: center;
-  }
+      .hero-content{
+        padding: 0 16px;
+        max-width: 560px;
+      }
 
-  .hero-cta .btn{
-    width: 100%;              /* botões “bonitos” no mobile */
-    max-width: 360px;
-  }
+      .hero h1{
+        font-size: 2.2rem;
+        line-height: 1.1;
+      }
 
-  /* STORY: vira 1 coluna e melhora leitura */
-  .story-wrap{
-    grid-template-columns: 1fr;
-  }
-  .story-box{
-    padding: 26px;
-  }
-  .story-side{
-    padding: 22px;
-  }
+      .hero p{
+        font-size: 1rem;
+        line-height: 1.5;
+      }
 
-  /* GALERIA: cada foto ocupa a linha toda */
-  .g1, .g2, .g3, .g4{
-    grid-column: span 12;
-    aspect-ratio: 16 / 11;
-  }
+      .hero-cta{
+        width: 100%;
+        justify-content: center;
+      }
 
-  /* SEÇÕES: menos “vazio” no mobile */
-  section{
-    padding: 58px 16px;
-  }
-}
+      .hero-cta .btn{
+        width: 100%;
+        max-width: 360px;
+      }
+
+      /* STORY */
+      .story-wrap{
+        grid-template-columns: 1fr;
+      }
+      .story-box{
+        padding: 26px;
+      }
+      .story-side{
+        padding: 22px;
+      }
+
+      /* GALERIA */
+      .g1, .g2, .g3, .g4{
+        grid-column: span 12;
+        aspect-ratio: 16 / 11;
+      }
+
+      /* SEÇÕES */
+      section{
+        padding: 58px 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -444,7 +456,10 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
-      <div class="monogram">S & R</div>
+      <div class="monogram" aria-label="Sara e Rafa">
+        <span>S</span><span class="amp">&</span><span>R</span>
+      </div>
+
       <div class="nav-links">
         <a href="#historia">Nossa história</a>
         <a href="#momentos">Momentos</a>
@@ -475,7 +490,9 @@
     <div class="story-wrap">
       <div class="story-box">
         <p>
-          Nos conhecemos em agosto de 2024 e desde então temos compartilhado momentos incríveis juntos. começamos a namorar no dia 20 de novembro, noivamos 1 ano depois e hoje estamos aqui, planejando nosso casamento e o futuro que queremos construir lado a lado.
+          Nos conhecemos em agosto de 2024 e desde então temos compartilhado momentos incríveis juntos.
+          Começamos a namorar no dia 20 de novembro, noivamos 1 ano depois e hoje estamos aqui,
+          planejando nosso casamento e o futuro que queremos construir lado a lado.
         </p>
         <p>
           Se quiser nos ajudar a montar nosso lar, preparamos algumas formas simples
@@ -486,8 +503,7 @@
       <div class="story-side">
         <div>
           <p class="bigline">“Grandes coisas fez o Senhor por nós, por isso estamos alegres.”</p>
-          <p>Salmos 126:3</p>
-          </p>
+          <p style="margin:10px 0 0; color: var(--muted); line-height: 1.7;">Salmos 126:3</p>
         </div>
       </div>
     </div>
@@ -511,7 +527,6 @@
       <div class="g-item g4" data-full="images/IMG_8562.jpg">
         <img src="images/IMG_8562.jpg" alt="Abraço na beira do mar" loading="lazy" />
       </div>
-      <!-- Se quiser adicionar mais: copie um bloco .g-item e troque o arquivo -->
     </div>
 
     <p style="margin:18px auto 0; max-width: 760px; color: var(--muted); line-height: 1.7;">
@@ -533,7 +548,7 @@
 
       <div class="option">
         <h3>🛒 Amazon</h3>
-        <p>Se preferir, comprar um item direto da nossa lista da amazon</p>
+        <p>Se preferir, comprar um item direto da nossa lista da Amazon.</p>
         <a href="https://www.amazon.com.br/hz/wishlist/ls/3JJ99YOWWPZI3?ref_=wl_share" class="btn" target="_blank" rel="noopener">Ver lista</a>
       </div>
 
@@ -559,8 +574,6 @@
         <div class="pix-key" id="pixKey">(85)99765-8287</div>
         <a class="btn copy" href="#" id="copyBtn">Copiar chave PIX</a>
       </div>
-
-      
     </div>
   </section>
 
@@ -598,7 +611,6 @@
         copyBtn.textContent = 'Copiado! ✅';
         setTimeout(() => (copyBtn.textContent = 'Copiar chave PIX'), 1400);
       } catch {
-        // fallback simples
         const ta = document.createElement('textarea');
         ta.value = key;
         document.body.appendChild(ta);
