@@ -367,13 +367,76 @@
       text-align: center;
     }
 
-    @media (max-width: 900px){
-      .story-wrap{ grid-template-columns: 1fr; }
-      .g1, .g2, .g3, .g4{ grid-column: span 12; }
-      .g1, .g4{ aspect-ratio: 16 / 11; }
-      .g2, .g3{ aspect-ratio: 16 / 11; }
-      .nav-links{ gap: 10px; }
-    }
+@media (max-width: 900px){
+
+  /* NAV: fica mais “clean” e evita quebrar feio */
+  .nav-inner{
+    padding: 12px 12px;
+    gap: 10px;
+  }
+  .nav-links{
+    gap: 6px;
+    font-size: 0.9rem;
+  }
+  .nav-links a{
+    padding: 6px 8px;
+  }
+
+  /* HERO: no celular centraliza e dá respiro */
+  .hero{
+    min-height: 72vh;
+    justify-items: center;     /* tira o alinhamento pra direita */
+    text-align: center;
+    background-position: 55% center; /* ajusta o corte da foto */
+  }
+
+  .hero-content{
+    padding: 0 16px;          /* evita “colado” nas bordas */
+    max-width: 560px;
+  }
+
+  .hero h1{
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+
+  .hero p{
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .hero-cta{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-cta .btn{
+    width: 100%;              /* botões “bonitos” no mobile */
+    max-width: 360px;
+  }
+
+  /* STORY: vira 1 coluna e melhora leitura */
+  .story-wrap{
+    grid-template-columns: 1fr;
+  }
+  .story-box{
+    padding: 26px;
+  }
+  .story-side{
+    padding: 22px;
+  }
+
+  /* GALERIA: cada foto ocupa a linha toda */
+  .g1, .g2, .g3, .g4{
+    grid-column: span 12;
+    aspect-ratio: 16 / 11;
+  }
+
+  /* SEÇÕES: menos “vazio” no mobile */
+  section{
+    padding: 58px 16px;
+  }
+}
   </style>
 </head>
 <body>
